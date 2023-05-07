@@ -23,6 +23,7 @@
     "@antfu/eslint-config-vue": "^0.38.5",
     "@iconify-json/ic": "^1.1.13",
     "@iconify-json/icon-park": "^1.1.10",
+    "@iconify/vue": "^4.1.1",
     "@types/node": "^18.16.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue-macros/volar": "^0.9.5",
