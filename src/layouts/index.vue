@@ -1,29 +1,56 @@
 <script setup lang="ts">
+import { AreaChartOutlined } from '@ant-design/icons-vue'
 
+const collapsed = ref(false)
+const selectedKeys = ref(['1'])
 </script>
 
 <template>
-  <div class="bg-[#d8dae2] flex justify-center items-center min-h-screen">
-    <div class="bg-[#eff0f1] p-10 rounded-3xl [&_*]:transition-all [&_*]:ease-linear [&_*]:duration-200">
-      <div>
-        <div>
-          <div class="text-xl font-bold w-[40vw]">
-            <h2>Vue3-template-starter</h2>
-          </div>
-          <div class="hidden md:flex items-center gap-4 mt-4 mb-8 [&>*]:bg-white [&>*]:px-4 [&>*]:py-2 [&>*]:rounded-lg [&>*:hover]:bg-slate-900 [&>*:hover]:text-white [&>*]:cursor-pointer">
-            <div @click="$router.push('/home')">
-              <h2>首页</h2>
-            </div>
-            <div @click="$router.push('/about')">
-              <h2>关于</h2>
-            </div>
-          </div>
+  <a-layout style="min-height: 100vh">
+    <a-layout-sider
+      v-model:collapsed="collapsed"
+      :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0 }"
+    >
+      <div class="logo" />
+      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+        <a-menu-item key="1">
+          <AreaChartOutlined />
+          <span>Option 1</span>
+        </a-menu-item>
+        <a-menu-item key="2">
+          <AreaChartOutlined />
+          <span>Option 2</span>
+        </a-menu-item>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout :style="{ marginLeft: '200px' }">
+      <a-layout-header style="background-color: #fff; padding: 0;">
+        header内容
+      </a-layout-header>
+      <a-layout-content class="flex flex-col mx-5">
+        <a-breadcrumb style="margin: 16px 0">
+          <a-breadcrumb-item>User</a-breadcrumb-item>
+          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+        </a-breadcrumb>
+        <div :style="{ padding: '24px', background: '#fff', flex: 1 }">
+          <RouterView />
         </div>
-
-        <div class="bg-white p-4 rounded">
-          <router-view />
-        </div>
-      </div>
-    </div>
-  </div>
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+[data-theme='dark'] .site-layout .site-layout-background {
+  background: #141414;
+}
+</style>

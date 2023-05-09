@@ -5,4 +5,8 @@ export default {
     extend: {},
   },
   plugins: [],
+  /** 解决antd按钮透明问题 */
+  corePlugins: {
+    preflight: false,
+  },
 }
